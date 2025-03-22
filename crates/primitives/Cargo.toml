@@ -51,6 +51,7 @@ serde = { version = "1.0", default-features = false, features = [
     "derive",
     "rc",
 ], optional = true }
+zkm-runtime = {git = "https://github.com/zkMIPS/zkm", package = "zkm-runtime"}
 
 [build-dependencies]
 hex = { version = "0.4", default-features = false }
