@@ -1,11 +1,28 @@
 use crate::{
     b256, B256, BLOB_GASPRICE_UPDATE_FRACTION, MIN_BLOB_GASPRICE, TARGET_BLOB_GAS_PER_BLOCK,
 };
-pub use alloy_primitives::keccak256;
+use alloy_primitives::keccak256 as keccak256_alloy;
+use zkm2_zkvm::lib::hasher::Hasher;
 
 /// The Keccak-256 hash of the empty string `""`.
 pub const KECCAK_EMPTY: B256 =
     b256!("c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470");
+
+// Define the keccak256 function
+#[inline]
+pub fn keccak256<T: AsRef<[u8]>>(bytes: T) -> B256 {
+    cfg_if::cfg_if! {
+        if #[cfg(target_os = "zkvm")] {
+            let mut output = [0u8; 32];
+            let mut hasher = zkm2_zkvm::lib::keccak::Keccak::v256();
+            hasher.update(bytes.as_ref());
+            hasher.finalize(&mut output);
+            B256::from(output)
+        } else {
+            keccak256_alloy(bytes)
+        }
+    }
+}
 
 /// Calculates the `excess_blob_gas` from the parent header's `blob_gas_used` and `excess_blob_gas`.
 ///
