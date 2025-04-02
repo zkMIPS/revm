@@ -4948,7 +4948,7 @@ dependencies = [
 [[package]]
 name = "zkm2-lib"
 version = "0.0.1"
-source = "git+https://github.com/zkMIPS/zkm2?branch=dev%2Finit#206cf9a7904b90996bdd225d8056497c6535a79b"
+source = "git+https://github.com/zkMIPS/zkm2?branch=keccak-sponge-precompile#374e3e601f0c5e69b7e7bb9233da0b77bdb4763f"
 dependencies = [
  "bincode",
  "cfg-if",
@@ -4959,7 +4959,7 @@ dependencies = [
 [[package]]
 name = "zkm2-zkvm"
 version = "0.0.1"
-source = "git+https://github.com/zkMIPS/zkm2?branch=dev%2Finit#206cf9a7904b90996bdd225d8056497c6535a79b"
+source = "git+https://github.com/zkMIPS/zkm2?branch=keccak-sponge-precompile#374e3e601f0c5e69b7e7bb9233da0b77bdb4763f"
 dependencies = [
  "bincode",
  "cfg-if",
