@@ -2,7 +2,7 @@ use crate::{
     b256, B256, BLOB_GASPRICE_UPDATE_FRACTION, MIN_BLOB_GASPRICE, TARGET_BLOB_GAS_PER_BLOCK,
 };
 use alloy_primitives::keccak256 as keccak256_alloy;
-use zkm2_zkvm::lib::hasher::Hasher;
+use zkm2_zkvm::lib::keccak256::keccak256 as keccak256_zkvm;
 
 /// The Keccak-256 hash of the empty string `""`.
 pub const KECCAK_EMPTY: B256 =
@@ -13,10 +13,7 @@ pub const KECCAK_EMPTY: B256 =
 pub fn keccak256<T: AsRef<[u8]>>(bytes: T) -> B256 {
     cfg_if::cfg_if! {
         if #[cfg(target_os = "zkvm")] {
-            let mut output = [0u8; 32];
-            let mut hasher = zkm2_zkvm::lib::keccak::Keccak::v256();
-            hasher.update(bytes.as_ref());
-            hasher.finalize(&mut output);
+            let output = keccak256_zkvm(bytes.as_ref());
             B256::from(output)
         } else {
             keccak256_alloy(bytes)
