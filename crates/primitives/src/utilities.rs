@@ -13,7 +13,7 @@ pub const KECCAK_EMPTY: B256 =
 pub fn keccak256<T: AsRef<[u8]>>(bytes: T) -> B256 {
     cfg_if::cfg_if! {
         if #[cfg(target_os = "zkvm")] {
-            let output = keccak256_zkvm(&bytes.as_ref());
+            let output = keccak256_zkvm(bytes.as_ref());
             B256::from(output)
         } else {
             keccak256_alloy(bytes)
