@@ -4957,8 +4957,8 @@ dependencies = [
 
 [[package]]
 name = "zkm-lib"
-version = "0.0.1"
-source = "git+https://github.com/zkMIPS/zkMIPS?branch=zkMIPS#b1a1dfa6bfd79a04d2b2dab77ac863242b298bb7"
+version = "1.0.0"
+source = "git+https://github.com/zkMIPS/zkMIPS#0dc6b49bad435d3fc5696a63444381438a1343b4"
 dependencies = [
  "bincode",
  "cfg-if",
@@ -4969,8 +4969,8 @@ dependencies = [
 
 [[package]]
 name = "zkm-zkvm"
-version = "0.0.1"
-source = "git+https://github.com/zkMIPS/zkMIPS?branch=zkMIPS#b1a1dfa6bfd79a04d2b2dab77ac863242b298bb7"
+version = "1.0.0"
+source = "git+https://github.com/zkMIPS/zkMIPS#0dc6b49bad435d3fc5696a63444381438a1343b4"
 dependencies = [
  "bincode",
  "cfg-if",
